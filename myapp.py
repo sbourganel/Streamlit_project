@@ -34,3 +34,12 @@ level = st.slider("Sélectionnez une note minimale de film", 1, 10)
 # format() is used to print value
 # of a variable at a specific position
 st.text('Selected: {}'.format(level))
+
+text = st.select('Pick a title:', ['Avengers: Endgame', 'The Batman', 'Avatar'])
+
+if text == 'Avengers: Endgame':
+    st.image("https://github.com/sbourganel/Streamlit_project/blob/main/Avengers.jpg")
+elif text == 'The Batman':
+    st.image("https://github.com/sbourganel/Streamlit_project/blob/main/The%20Batman.jpg")
+else:
+    st.write("https://github.com/sbourganel/Streamlit_project/blob/main/Avatar.jpg")
