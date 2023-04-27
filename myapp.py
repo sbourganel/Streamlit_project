@@ -42,4 +42,4 @@ if text == 'Avengers: Endgame':
 elif text == 'The Batman':
     st.image("https://github.com/sbourganel/Streamlit_project/blob/main/The%20Batman.jpg")
 else:
-    st.image("https://github.com/sbourganel/Streamlit_project/blob/main/Avatar.jpg
+    st.image("https://github.com/sbourganel/Streamlit_project/blob/main/Avatar.jpg")
