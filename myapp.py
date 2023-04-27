@@ -1,5 +1,5 @@
 import streamlit as st
-
+import time
 
 st.title('Outil de recommandation de films')
 
@@ -35,11 +35,25 @@ level = st.slider("Sélectionnez une note minimale de film", 1, 10)
 # of a variable at a specific position
 st.text('Selected: {}'.format(level))
 
-text = st.selectbox('Pick a title:', ['Avengers: Endgame', 'The Batman', 'Avatar'])
+col1, col2, col3 = st.columns([1,2,1])
 
-if text == 'Avengers: Endgame':
-    st.image("https://github.com/sbourganel/Streamlit_project/blob/main/Avengers.jpg")
-elif text == 'The Batman':
-    st.image("https://github.com/sbourganel/Streamlit_project/blob/main/The%20Batman.jpg")
-else:
-    st.image("https://github.com/sbourganel/Streamlit_project/blob/main/Avatar.jpg")
+text = col1.st.selectbox('Pick a title:', ['Avengers: Endgame', 'The Batman', 'Avatar'])
+if 'photo' not in st.session_state:
+  st.session_state['photo']='not done'
+
+def change_photo_state():
+  st.session_state['photo']='done'
+
+camera_photo = col2.camera_input('take a photo', on_change=change_photo_state)
+
+if st.session_state['photo'] == 'done':
+  progress_bar = col2.progress(0)
+
+  for perc_completed in range(100):
+    time.sleep(0.05)
+    progress_bar.progress(perc_completed+1)
+
+    col2.success('photo uploaded successfully!')
+
+col3.metric(label='Movie Revenue', value=15000, delta='30')
+
